@@ -59,7 +59,7 @@ Permissions must be divided by a "-".
 ## Security
 The server implements the ftp protocol, not the ftps or sftp protocol. Therefore it is not secure: files and passwords are transmitted in clear text and no mechanism is implemented to verify the integrity of messages and authenticate the server.
 ## Execution
-To compile the program, run the make file. Then type the command from the terminal:
+To compile the program, run the make file. Type this command from the terminal:
 ``` 
 make
 ```
