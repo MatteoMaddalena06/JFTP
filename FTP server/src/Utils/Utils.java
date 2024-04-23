@@ -61,7 +61,7 @@ public class Utils
                 parametersCounter += (flagArray[0]) ? 0 : 1;
                 flagArray[0] = true;
             }
-            if(fileInputTokens[0].equals("rootdirectory"))
+            else if(fileInputTokens[0].equals("rootdirectory"))
             {
                 configuration.rootDirectory = fileInputTokens[1];
                 parametersCounter += (flagArray[1]) ? 0 : 1;
