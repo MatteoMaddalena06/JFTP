@@ -11,4 +11,4 @@ build:
 clean:
 	@rm $(bytecode_dir)/*.class
 	@rm -d $(bytecode_dir)
-	@echo Compilation results removed.
+	@echo "Compilation results removed."
