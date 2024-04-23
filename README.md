@@ -14,8 +14,8 @@ The program consists of eight modules each designed for a specific purpose:
 - **Response.java**: this module is used to create ftp server response messages. It makes use of the CreateMessage.java module.
 ## Server configuration
 The server configuration is carried out via the following files:
-- The server configuration file: which contains all the configuration information about the server, such as IP, port, root directory etc.
-- The user list file: which contains user configuration information, such as name, password, permissions etc.
+- **The server configuration file**: which contains all the configuration information about the server, such as IP, port, root directory etc.
+- **The user list file**: which contains user configuration information, such as name, password, permissions etc.
 ### Configuration example
 Here follows an example of server configuration:
 ``` 
@@ -55,5 +55,17 @@ re: for file renaming permission.
 h:  for permission to see hidden files with file listing.
 d:  for permission to delete files and directories.
 ```
-Permissions must be divided by a "-"
+Permissions must be divided by a "-".
+## Security
+The server implements the ftp protocol, not the ftps or sftp protocol. Therefore it is not secure: files and passwords are transmitted in clear text and no mechanism is implemented to verify the integrity of messages and authenticate the server.
+## Execution
+To compile the program, run the make file. Then type the command from the terminal:
+``` 
+make
+```
+To run the server, move to the ByteCodes directory and execute the following command:
+```
+sudo java JFtpServer.java <configuration file pathname>
+```
+Where ```<configuration file pathname>``` is the name of the configuration file that will be used by the server. If the port set in the configuration file is greater than 1023, you can omit the ```sudo``` command.
 
