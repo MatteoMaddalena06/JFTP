@@ -61,6 +61,7 @@ public class Response
                    "     QUIT  PORT  PASV  STRU  MODE  RETR\r\n" +
                    "     STOR  STOU  APPE  RNFR  RNTO  DELE\r\n" +
                    "     LIST  MKD   PWD   SYST  HELP  NOOP\r\n" +
+                   "     NLST  RMD\r\n" +
                    "214 HELP OK.");
           put(553, "553 * failed. File name not allowed.");
       }};
