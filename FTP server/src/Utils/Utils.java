@@ -224,18 +224,40 @@ public class Utils
     */
     public static void transferData(InputStream source, OutputStream destination, String type) throws IOException
     {
-        byte[] buffer = new byte[BUFFER_SIZE];
+        byte[] buffer = new byte[BUFFER_SIZE], conversion_buffer = null;
         int size;
+        boolean dataType;
 
-        while((size = source.read(buffer)) > 0)
+        if((dataType = type.equals("A") || type.equals("A N")))
+            conversion_buffer = new byte[CONV_BUFFER_SIZE];
+
+        while((size = source.read(buffer, 0, BUFFER_SIZE)) > 0)
         {
-            if(type.equals("A") || type.equals("A N"))
-              System.arraycopy(new String(buffer, 0, size).replace("([^\r])\n", "$1\n").getBytes(), 0, buffer, 0, size);
+            if(dataType)
+                size = convert2ascii(buffer, conversion_buffer, size);
 
-            destination.write(buffer, 0, size);
+            destination.write((dataType) ? conversion_buffer : buffer, 0, size);
         }
 
         source.close(); destination.close();
+    }
+
+    private static int convert2ascii(byte[] src, byte[] dest, int size)
+    {
+        int j = 0;
+
+        for(int i = 0; i < size; i++)
+        {
+            if(src[i] == '\n' && (i == 0 || src[i - 1] != '\r'))
+            {
+                dest[j++] = '\r';
+                dest[j++] = '\n';
+            }
+            else
+              dest[j++] = src[i];
+        }
+
+        return j;
     }
 }
 
