@@ -10,8 +10,11 @@ public class Utils
 {
     //regex to check IP address correctness.
     public static final String IpAddressRegex = "([0-9]+\\.){3}[0-9]+";
-    //size of the buffer used for data transmission.
+    //regex to replace all \r in ascii type
+    public static final String CRLF_regex = "(?<!\\r)\\n";
+    //size of the buffers used for data transmission.
     public static final int BUFFER_SIZE = 8192;
+    public static final int CONV_BUFFER_SIZE = BUFFER_SIZE << 1;
 
     public static final String welcomeMessage =
         "-\r\n"+
